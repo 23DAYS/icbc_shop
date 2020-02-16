@@ -1,0 +1,570 @@
+<!DOCTYPE HTML>
+<head>
+	<meta charset="UTF-8">
+	<meta name="format-detection" content="telephone=yes"/>
+    <title>工作室</title>
+	
+    <!-- 引入样式 -->
+	<link rel="stylesheet" href="index.css">
+	
+	<style type="text/css">
+		p {
+			margin: 0;
+		}
+		p, span {
+			font-family: Noto Sans S Chinese;
+		}
+		
+		.el-row {
+			margin-bottom: 1px;
+			&: last-child {
+				margin-bottom: 0;
+			}
+		}
+		.el-col {
+			border-radius: 4px;
+		}
+		.el-divider--horizontal {
+			margin: 0px;
+		}
+		.el-tag--medium {
+			font-size: 16px;
+		}
+		
+		.color_grey {
+			color: rgba(62,62,62,1);
+		}
+		.color_light_grey {
+			color: rgba(110,110,110,1);
+		}
+		.color_white {
+			color: rgba(255,255,255,1);
+		}
+		.color_orange {
+			color: rgba(233,104,99,1);
+		}
+		.bg_color_orange {
+			background-color: #E96863;
+		}
+		.bg_color_light_orange {
+			background-color: #FEF2F4;
+		}
+		.bg_color_light_blue {
+			background: rgba(242,242,255,1);
+		}
+		.bg_color_white {
+			background-color: rgba(255,255,255,1);;
+		}
+		.bg_1 {
+			background: linear-gradient(135deg,rgba(187,146,112,1), rgba(212,180,150,1)); 
+		}
+		.bg_2 {
+			background: linear-gradient(135deg,rgba(191,125,122,1),rgba(206,148,146,1));
+		}
+		.bg_3 {
+			background: linear-gradient(135deg,rgba(123,128,152,1),rgba(145,152,192,1));
+		}
+		
+		.font_28 {
+			font-size: 28px;
+			font-weight: 500;
+			margin: 10px 0;
+		}
+		.font_30 {
+			font-size: 30px;
+			font-weight: 500;
+			margin: 10px 0;
+		}
+		.font_36 {
+			font-size: 36px;
+			font-weight: 500;
+			margin: 12px 0;
+		}
+		.font_45 {
+			font-size: 45px;
+			font-weight: 500;
+			margin: 15px 0;
+		}
+		.font_50 {
+			font-size: 50px;
+			font-weight: bold;
+			margin: 17px 0;
+		}
+		.font_60 {
+			font-size: 60px;
+			font-weight: bold;
+			margin: 20px 0;
+		}
+		
+		.margin_box {
+			margin: 30px;
+		}
+		
+		.box { 
+			width: 100%; 
+			margin: auto; 
+			overflow: hidden; 
+		}
+		.home_top { 
+			position: relative; 
+			width: 100%; 
+			height: 370px; 
+			text-align: center; 
+			line-height: 50px; 
+		}
+		.home_top:after { 
+			width: 140%; 
+			height: 370px; 
+			position: absolute; 
+			left: -20%; 
+			top: 0; 
+			z-index: -10; 
+			content: ''; 
+			border-radius: 0 0 50% 50%; 
+			background: linear-gradient(0deg,rgba(235,127,124,1), rgba(233,104,99,1)); 
+		}
+		
+		.logo {
+			position: absolute; 
+			top: 50px; 
+			left: 36px;
+		}
+		.badge {
+			position: absolute; 
+			top: 20px; 
+			right: 10px;
+		}
+		.branch {
+			position: absolute; 
+			top: 35px; 
+			right: 55px;
+		}
+		
+		.person_card {
+			width:-webkit-calc(100% - 60px); 
+			width:-moz-calc(100% - 60px); 
+			width:calc(100% - 60px);  
+			height: 450px; 
+			border-radius: 20px;
+			box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.15); 
+			position: absolute; 
+			top: 100px; 
+		}
+		.avatar_circle {
+			width: 200px;
+			height: 200px;
+			-moz-border-radius: 100px;
+			-webkit-border-radius: 100px;
+			border-radius: 100px;
+			margin: 35px 35px 25px;
+		}
+		.avatar_margin {
+			margin: 5px;
+		}
+		.person_info_box {
+			margin: 60px 20px 30px;
+		}
+		.qrcode_box {
+			margin: 60px 20px; 
+		}
+		.person_column_box {
+			margin-top: 30px; 
+			text-align: center;
+		}
+		
+		.notice_box {
+			margin-top: 250px; 
+			margin-left: 30px;
+		}
+		
+		.divide {
+			width: 100%; 
+			height: 18px; 
+			background: #F4F4F4;
+		}
+		
+		.create_account {
+			margin: 0 auto; 
+			padding: 10px;
+			width: 640px; 
+			border-radius: 20px;
+		}
+		
+		.ads_box {
+			border-radius: 6px; 
+			padding: 30px;
+		}
+		
+		.ads_apply_box {
+			margin: 20px 20px 0; 
+			text-align: center;
+		}
+		
+		.article_box {
+			border-radius: 6px; 
+			padding: 30px;
+		}
+		
+	</style>
+</head>
+<html>
+	<body style="width: 100%; margin:0 auto;">
+		<div id="app">
+			<div class="box">
+				<div class="home_top">
+					<div class="logo">
+						<el-image :src="logo_url" style="width: 400px; height: 48px"></el-image>
+					</div>
+					<div class="badge">
+						<el-image :src="badge_url"></el-image>
+					</div>
+					<div class="branch">
+						<p class="color_white font_45">{{branch}}</p>
+					</div>
+				</div>
+			</div>
+			
+			<div class="person_card bg_color_white margin_box">
+				<el-row>
+					<div class="avatar_circle bg_color_orange" style="float: left;">
+						<el-avatar class="avatar_margin" shape="circle" 
+							:size="190" :src="person_photo_url"></el-avatar>
+					</div>
+					<div class="person_info_box" style="float: left;">
+						<p class="position color_light_grey font_50">
+							<span class="color_grey font_60">{{name}}</span>
+							{{position}}
+						</p>
+						<p class="slogan color_orange font_45">工至于诚，行以致远</p>
+					</div>
+					<div class="qrcode_box" style="float: right;">
+						<el-image :src="qrcode_url" ></el-image>
+					</div>
+				</el-row>
+				<el-divider style="margin: 0;"></el-divider>
+				<el-row>
+					<el-col :span="8">
+						<div class="person_column_box">
+							<div>
+								<img src="images/zizhi.png">
+								<div style="padding: 14px;">
+									<span class="color_grey font_36">我的资质</span>
+								</div>
+							</div>
+						</div>
+					</el-col>
+					<el-col :span="8">
+						<div class="person_column_box">
+							<div>
+								<img src="images/lingyu.png">
+								<div style="padding: 14px;">
+									<span class="color_grey font_36">擅长领域</span>
+								</div>
+							</div>
+						</div>
+					</el-col>
+					<el-col :span="8">
+						<div class="person_column_box">
+							<div>
+								<div>
+									<a :href="'tel:' + telephone">
+										<img src="images/lianxi.png">
+									</a>
+								</div>
+								<div style="padding: 14px;">
+									<span class="color_grey font_36">联系我</span>
+								</div>
+							</div>
+						</div>
+					</el-col>
+				</el-row>
+			</div>
+			
+			<div class="notice_box">
+				<p class="color_light_grey font_36">
+					&nbsp;<img src="images/alert.png" class="image">&nbsp;
+					温馨提示：资金交易将在手机银行上完成</p>
+			</div>
+			
+			<div class="margin_box">
+				<el-row :gutter="20">
+					<el-col :span="12">
+						<div class="article_box bg_color_light_orange font_45">	
+							<el-row :gutter="10">
+								<el-col :span="10">
+									<p class="color_grey">聊理财</p>
+									<i style="margin-top: 30px;" class="el-icon-caret-right"></i>
+								</el-col>
+								<el-col :span="14" >
+									<div style="margin: 16px;">
+										<img src="images/liaolicai.png" class="image">
+									</div>
+								</el-col>
+							</el-row>
+						</div>
+					</el-col>
+					<el-col :span="12">
+						<div class="article_box bg_color_light_blue font_45">	
+							<el-row :gutter="10">
+								<el-col :span="10">
+									<p class="color_grey">看资讯</p>
+									<i style="margin-top: 30px;" class="el-icon-caret-right"></i>
+								</el-col>
+								<el-col :span="14" >
+									<div style="margin: 16px;">
+										<img src="images/kanzixun.png" class="image">
+									</div>
+								</el-col>
+							</el-row>
+						</div>
+					</el-col>
+				</el-row>
+			</div>
+			
+			<div class="divide"></div>
+			
+			<div class="margin_box">
+				<el-row>
+					<p class="font_36">
+					&nbsp;<img src="images/start.png" class="image">&nbsp;
+					精选产品</p>
+				</el-row>
+				<el-row>
+					<el-carousel :interval="4000" indicator-position="outside" height="340px">
+						<template v-for="(item, index) in products">
+							<el-carousel-item v-if="index%2==0 && index!=products.length-1" >
+								<el-row :gutter="20">
+									<el-col :span="12">
+										<el-card :body-style="{ padding: '30px' }">
+											<div>
+												<p class="color_light_grey font_36">
+													{{products[index].name}}
+												</p>
+												<p class=" color_orange font_45">
+													{{products[index].rate}}
+												</p>
+												<p class="color_grey font_30">
+													{{products[index].description}}
+												</p>
+												<div>
+													<el-tag style="margin: 20px 10px 20px 0; font-size: 20px;" type="warning"
+														v-for="(e,i) in products[index].tags" :key="i">{{e.t}}</el-tag>
+												</div>
+											</div>
+										</el-card>
+									</el-col>
+									<el-col :span="12">
+										<el-card :body-style="{ padding: '30px' }">
+											<div>
+												<p class="color_light_grey font_36">
+													{{products[index+1].name}}
+												</p>
+												<p class="color_orange font_45">
+													{{products[index+1].rate}}
+												</p>
+												<p class="color_grey font_30">
+													{{products[index+1].description}}
+												</p>
+												<div>
+													<el-tag style="margin: 20px 10px 20px 0; font-size: 20px;" type="warning"
+														v-for="(e,i) in products[index+1].tags" :key="i">{{e.t}}</el-tag>
+												</div>
+											</div>
+										</el-card>
+									</el-col>
+								</el-row>
+							</el-carousel-item>
+							<el-carousel-item v-if="index%2==0 && index==products.length-1" >
+								<el-row :gutter="20">
+									<el-col :span="12">
+										<el-card :body-style="{ padding: '30px' }">
+											<div>
+												<p class="color_light_grey font_36">
+													{{products[index].name}}
+												</p>
+												<p class="color_orange font_45">
+													{{products[index].rate}}
+												</p>
+												<p class="color_grey font_30">
+													{{products[index].description}}
+												</p>
+												<div>
+													<el-tag style="margin: 20px 10px 20px 0; font-size: 20px;" type="warning" 
+														v-for="(e,i) in products[index].tags" :key="i">{{e.t}}</el-tag>
+												</div>
+											</div>
+										</el-card>
+									</el-col>
+									<el-col :span="12">
+									</el-col>
+								</el-row>
+							</el-carousel-item>
+						</template>	
+					</el-carousel>
+				</el-row>
+			</div>
+			
+			<div class="margin_box">
+				<div class="create_account bg_color_orange" @click="jump">
+					  <p class="color_white font_45" style="text-align: center;">
+					  没有工行账户？一分钟开户</p>
+				</div>
+			</div>
+			
+			<div class="divide"></div>
+			
+			<div class="margin_box">
+				<el-row>
+					<p class="font_36">
+					&nbsp;<img src="images/start.png" class="image">&nbsp;
+					邀您体验</p>
+				</el-row>
+				<el-row style="margin-top: 20px;">
+					<el-row :gutter="30">
+						<el-col :span="8">
+							<el-card :body-style="{ padding: '0px' }">
+								<div class="ads_box bg_1">
+									<p class="color_white font_36">
+										融e借
+									</p>
+									<p class="color_white font_30">
+										最高可借
+									</p>
+									<p class="color_white font_30">
+										800,000元
+									</p>
+									<div class="ads_apply_box">
+										<el-button round class="color_orange font_28" 
+										@click="jump">立即申请</el-button>
+									</div>
+								</div>
+							</el-card>
+						</el-col>
+						<el-col :span="8">
+							<el-card :body-style="{ padding: '0px' }">
+								<div class="ads_box bg_2">
+									<p class="color_white font_36">
+										急用钱
+									</p>
+									<p class="color_white font_30">
+										手机取现
+									</p>
+									<p class="color_white font_30">
+										实时到账
+									</p>
+									<div class="ads_apply_box">
+										<el-button round class="color_orange font_28" 
+										@click="jump">立即申请</el-button>
+									</div>
+								</div>
+							</el-card>
+						</el-col>
+						<el-col :span="8">
+							<el-card :body-style="{ padding: '0px' }">
+								<div class="ads_box bg_3">
+									<p class="color_white font_36">
+										随用金
+									</p>
+									<p class="color_white font_30">
+										最高可借
+									</p>
+									<p class="color_white font_30">
+										800,000元
+									</p>
+									<div class="ads_apply_box">
+										<el-button round class="color_orange font_28" 
+										@click="jump">立即申请</el-button>
+									</div>
+								</div>
+							</el-card>
+						</el-col>
+					</el-row>
+				</el-row>
+			</div>
+			
+		</div>
+	</body>
+
+	<!-- 引入组件库 -->
+	<script src="vue.js"></script>
+	<script src="index.js"></script>
+	<script>
+		new Vue({
+			el: '#app',
+			data: function() {
+				return { 
+					name: '泊远',
+					branch: '湖南分行',
+					position: '客户经理',
+					telephone: '13917000000',
+					logo_url: 'images/logo.png',
+					badge_url: 'images/badge.png',
+					person_photo_url: 'images/wangjunkai.jpg',
+					qrcode_url: 'images/qrcode.png',
+					products: [
+						{
+							name: '2017年工银“随心e…',
+							rate: '3.40%~3.50%',
+							description: '最短持30天，10万起购',
+							tags: [ 
+								{t: '标签一'}, 
+								{t: '标签二'}, 
+								{t: '标签三'}, 
+								{t: '标签四'}
+							]
+						},
+						{
+							name: '2018年工银“随心e…',
+							rate: '3.40%~3.50%',
+							description: '最短持30天，10万起购',
+							tags: [ 
+								{t: '标签一'}, 
+								{t: '标签二'}, 
+								{t: '标签三'}, 
+								{t: '标签四'}
+							]
+						},
+						{
+							name: '2019年工银“随心e…',
+							rate: '3.40%~3.50%',
+							description: '最短持30天，10万起购',
+							tags: [ 
+								{t: '标签一'}, 
+								{t: '标签二'}, 
+								{t: '标签三'}, 
+								{t: '标签四'}
+							]
+						},
+						{
+							name: '2020年工银“随心e…',
+							rate: '3.40%~3.50%',
+							description: '最短持30天，10万起购',
+							tags: [ 
+								{t: '标签一'}, 
+								{t: '标签二'}, 
+								{t: '标签三'}, 
+								{t: '标签四'}
+							]
+						},
+						{
+							name: '2021年工银“随心e…',
+							rate: '3.40%~3.50%',
+							description: '最短持30天，10万起购',
+							tags: [ 
+								{t: '标签一'}, 
+								{t: '标签二'}, 
+								{t: '标签三'}, 
+								{t: '标签四'}
+							]
+						}
+					]
+				}
+			},
+			methods: {
+				jump: function() {
+					window.location.href='http://www.dxy.cn/';
+				}
+			}
+		})
+	</script>
+</html>
