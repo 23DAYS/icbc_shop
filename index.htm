@@ -224,6 +224,8 @@
 				</div>
 			</div>
 			
+			
+			
 			<div class="person_card bg_color_white margin_box">
 				<el-row>
 					<div class="avatar_circle bg_color_orange" style="float: left;">
@@ -284,6 +286,14 @@
 				<p class="color_light_grey font_36">
 					&nbsp;<img src="images/alert.png" class="image">&nbsp;
 					温馨提示：资金交易将在手机银行上完成</p>
+			</div>
+			
+			<div class="box">
+					<div>
+						<el-image :src="qr_url" style="width: 400px; height: 400px">
+						</el-image>
+					</div>
+				</div>
 			</div>
 			
 			<div class="margin_box">
@@ -499,6 +509,7 @@
 					telephone: '13917000000',
 					logo_url: 'images/logo.png',
 					badge_url: 'images/badge.png',
+					qr_url: 'images/qr.jpg',
 					person_photo_url: 'images/wangjunkai.jpg',
 					qrcode_url: 'images/qrcode.png',
 					products: [
@@ -562,7 +573,7 @@
 			},
 			methods: {
 				jump: function() {
-					window.location.href='http://www.dxy.cn/';
+					window.location.href='https://broccoli.uc.cn/apps/pneumonia/routes/index?uc_param_str=dsdnfrpfbivesscpgimibtbmnijblauputogpintnwktprchmt&fromsource=doodle';
 				}
 			}
 		})
